@@ -68,16 +68,16 @@ export function AppSidebar() {
     return (
         <Sidebar>
             <SidebarHeader>
-                <div className='p-4'>
-                   
+                <div className='p-20'>
+                   <Image src={'/Logo-Image-transparent-background.png'} alt='logo' width={400} height={400} className='w-small h-small'/>
                     <h2 className='text-sm text-gray-400 text-center'>Build Awesome</h2>
-                </div>
+                </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ````````
             </SidebarHeader>
             <SidebarContent>
                 <SidebarGroup>
 
                     <SidebarGroupContent>
-                        <SidebarMenu className='mt-5'>
+                        <SidebarMenu className='mt-1'>
                             {items.map((item, index) => (
                                 // <SidebarMenuItem key={item.title} className='p-2'>
                                 //     <SidebarMenuButton asChild className=''>
