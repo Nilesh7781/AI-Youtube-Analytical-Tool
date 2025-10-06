@@ -1,6 +1,9 @@
+import Image from "next/image";
+import Link from "next/link";
+
 import React from 'react'
 
-const Feature=[{
+const Features=[{
     id:1,
     title:'AI Thumbnail Generator',
     image:'/feature1.png',
@@ -35,6 +38,16 @@ function FeatureList() {
   return (
     <div className='mt-7'>
         <h2 className='font-bold text-2xl'>AI Tools</h2>
+        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5'>
+            {Features.map((feature,index)=>(
+                <Link href={feature.path} key={index}>
+                <Image src ={feature.image} alt={feature.title}
+                width={200}
+                height={200}
+                className='w-full h-[150px]' />
+                </Link>
+            ))}
+        </div>
     </div>
   )
 }
