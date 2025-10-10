@@ -10,6 +10,7 @@ function AIThumbnailGenerator() {
   const [faceImage, setFaceImage] = useState<File>();
   const [referanceImagePreview, setReferanceImagePreview] = useState<string>();
   const [faceImagePreview, setFaceImagePreview] = useState<string>();
+  const[loading,setLoading]=useState(false);
 
   const onHandFileChange = (
     field: string,
@@ -37,17 +38,24 @@ function AIThumbnailGenerator() {
     };
   }, [referanceImagePreview, faceImagePreview]);
 
-  const onSubmit = async() => {
-  const formData = new FormData();
-  
-    userInput&&formData.append("userInput", userInput); 
-    referanceImage&&formData.append('refImage',referanceImage);
-    faceImage&&formData.append('faceImage',faceImage);
-  
-    //Post api call
-    const result=await axios.post('/api/generate-thumbnail',formData)
+ const onSubmit = async () => {
+  try {
+    setLoading(true);
+    const formData = new FormData();
+    userInput && formData.append("userInput", userInput);
+    referanceImage && formData.append("refImage", referanceImage);
+    faceImage && formData.append("faceImage", faceImage);
+
+    const result = await axios.post("/api/generate-thumbnail", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
     console.log(result.data);
+  } catch (err) {
+    console.error("API error:", err);
+  }
 };
+
 
 
   return (
